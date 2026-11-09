@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-mode="admin">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#fbfcf8">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-<title>Equipo en Calle</title>
+<title>Equipo en Calle · Administración</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <script>window.L||document.write('<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"><\/script>')</script>
@@ -76,7 +76,7 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;font:14.5px/1.5 var(--font-sans);letter-spacing:var(--tracking-normal);background:var(--background);color:var(--foreground);-webkit-font-smoothing:antialiased}
 body.lock{overflow:hidden}
 button,input,select,textarea{font:inherit;color:inherit;letter-spacing:inherit}
-:focus-visible{outline:2px solid color-mix(in oklch,var(--ring) 50%,transparent);outline-offset:2px}
+:focus-visible{outline:2px solid color-mix(in srgb,var(--ring) 50%,transparent);outline-offset:2px}
 a{color:var(--accent-foreground)}
 h2{margin:0 0 4px;font-size:22px;font-weight:600;letter-spacing:-.02em}
 h3{margin:0 0 12px;font-size:15.5px;font-weight:600}
@@ -100,13 +100,13 @@ h3{margin:0 0 12px;font-size:15.5px;font-weight:600}
 .tab{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:0;background:none;padding:10px 14px;border-radius:var(--radius-md);font-weight:500;color:var(--sidebar-foreground);cursor:pointer;transition:background .15s}
 .tab svg{width:18px;height:18px;flex:none;color:var(--muted-foreground)}
 .tab:hover{background:var(--sidebar-accent);color:var(--sidebar-accent-foreground)}
-.tab.on{background:var(--sidebar-primary);color:var(--sidebar-primary-foreground);font-weight:600;box-shadow:0 6px 18px color-mix(in oklch,var(--sidebar-primary) 35%,transparent)}
+.tab.on{background:var(--sidebar-primary);color:var(--sidebar-primary-foreground);font-weight:600;box-shadow:0 6px 18px color-mix(in srgb,var(--sidebar-primary) 35%,transparent)}
 .tab.on svg{color:var(--sidebar-primary-foreground)}
 .tab .badge{margin-left:auto}
 .sfoot{border-top:1px solid var(--sidebar-border);padding:14px 8px 0;font-size:12px;color:var(--muted-foreground);display:flex;align-items:center;gap:8px}
-.sfoot i{width:8px;height:8px;border-radius:50%;background:var(--chart-3);box-shadow:0 0 0 3px color-mix(in oklch,var(--chart-3) 25%,transparent);flex:none}
+.sfoot i{width:8px;height:8px;border-radius:50%;background:var(--chart-3);box-shadow:0 0 0 3px color-mix(in srgb,var(--chart-3) 25%,transparent);flex:none}
 .wrapc{flex:1;min-width:0;display:flex;flex-direction:column}
-.top{position:sticky;top:0;z-index:1100;display:flex;align-items:center;gap:10px;padding:14px 28px;background:color-mix(in oklch,var(--background) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);flex-wrap:wrap}
+.top{position:sticky;top:0;z-index:1100;display:flex;align-items:center;gap:10px;padding:14px 28px;background:color-mix(in srgb,var(--background) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);flex-wrap:wrap}
 .top h1{font-size:19px;margin:0;font-weight:600;letter-spacing:-.02em}
 .ham,.iconbtn{border:1px solid var(--border);background:var(--card);width:36px;height:36px;border-radius:var(--radius-sm);display:grid;place-items:center;cursor:pointer;color:var(--foreground);flex:none}
 .ham{display:none;border:0;background:none;margin-left:-6px}
@@ -115,7 +115,7 @@ h3{margin:0 0 12px;font-size:15.5px;font-weight:600}
 .pill i{width:8px;height:8px;border-radius:50%;background:var(--chart-5);flex:none}
 .pill.ok i{background:var(--chart-3)}.pill.warn i{background:oklch(0.77 0.16 70)}.pill.bad i{background:var(--destructive)}
 .pill.live i{animation:pulse 1.4s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in oklch,var(--chart-3) 60%,transparent)}100%{box-shadow:0 0 0 9px transparent}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--chart-3) 60%,transparent)}100%{box-shadow:0 0 0 9px transparent}}
 select.pill{appearance:auto}
 #who{max-width:260px}
 #scrim{display:none}
@@ -155,7 +155,7 @@ main{width:100%;max-width:1320px;padding:26px 28px 80px}
 .kpi>b+.ksub{margin-top:12px}
 @media(max-width:560px){.kpi{padding:14px}.kpi>b{font-size:22px}.kic{width:36px;height:36px;margin-bottom:10px}.ksub{font-size:12px}}
 /* Tarjeta destacada oscura con indicador */
-.hero{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 0% 0%,color-mix(in oklch,var(--primary) 20%,oklch(0.2077 0.0398 265.75)) 0%,oklch(0.2077 0.0398 265.75) 55%,oklch(0.1288 0.0406 264.7) 100%);color:oklch(0.9842 0.0034 247.86);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 22px 18px;display:flex;flex-direction:column;align-items:center;box-shadow:var(--shadow-2xl);min-height:330px}
+.hero{position:relative;overflow:hidden;background:radial-gradient(120% 90% at 0% 0%,color-mix(in srgb,var(--primary) 20%,oklch(0.2077 0.0398 265.75)) 0%,oklch(0.2077 0.0398 265.75) 55%,oklch(0.1288 0.0406 264.7) 100%);color:oklch(0.9842 0.0034 247.86);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 22px 18px;display:flex;flex-direction:column;align-items:center;box-shadow:var(--shadow-2xl);min-height:330px}
 .hero .htitle{align-self:flex-start;font-weight:600;font-size:15.5px}
 .gwrap{position:relative;width:min(310px,100%);margin:12px auto 0}
 .gwrap svg{display:block;width:100%;height:auto;overflow:visible}
@@ -187,7 +187,7 @@ svg.combo{display:block;width:100%;height:auto;overflow:visible}
 .sbox{border:1px solid;border-radius:var(--radius-sm);padding:11px 14px 12px;margin-bottom:10px}
 .sbox .t{display:flex;justify-content:space-between;gap:8px;font-size:13px;font-weight:500;margin-bottom:8px}
 .sbox .t .mono{font-size:11.5px;white-space:nowrap}
-.sbar{height:6px;border-radius:99px;background:color-mix(in oklch,currentColor 12%,transparent);overflow:hidden}
+.sbar{height:6px;border-radius:99px;background:color-mix(in srgb,currentColor 12%,transparent);overflow:hidden}
 .sbar i{display:block;height:100%;border-radius:99px}
 .sbox.g{background:var(--okbg);border-color:var(--okline);color:var(--ok)}.sbox.g .sbar i{background:var(--chart-3)}
 .sbox.y{background:var(--warnbg);border-color:var(--warnline);color:var(--warn)}.sbox.y .sbar i{background:oklch(0.85 0.17 90)}
@@ -220,7 +220,7 @@ svg.combo{display:block;width:100%;height:auto;overflow:visible}
 .row .t{font-weight:600;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 @media(max-width:560px){.row{flex-wrap:wrap}.acts{width:100%;justify-content:stretch}.acts .btn{flex:1}}
-.jornada.on{border-color:var(--primary);box-shadow:0 0 0 4px color-mix(in oklch,var(--primary) 22%,transparent)}
+.jornada.on{border-color:var(--primary);box-shadow:0 0 0 4px color-mix(in srgb,var(--primary) 22%,transparent)}
 .gpsline{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:13px;padding:10px 12px;background:var(--muted);border-radius:var(--radius-sm)}
 .dot{width:9px;height:9px;border-radius:50%;background:var(--chart-5);display:inline-block}
 .dot.ok{background:var(--chart-3)}.dot.warn{background:oklch(0.77 0.16 70)}
@@ -285,6 +285,7 @@ td select{padding:4px 6px;border:1px solid var(--input);border-radius:8px;backgr
 .seg button.on{background:var(--primary);color:var(--primary-foreground)}
 #modal{position:fixed;inset:0;background:oklch(0.13 0.04 265 / .5);z-index:2000;display:flex;align-items:flex-end;justify-content:center}
 #modal[hidden]{display:none}
+[hidden]{display:none!important}
 .sheet{background:var(--popover);color:var(--popover-foreground);width:100%;max-width:660px;max-height:94vh;overflow:auto;border-radius:var(--radius-xl) var(--radius-xl) 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom));box-shadow:var(--shadow-2xl)}
 @media(min-width:700px){#modal{align-items:center}.sheet{border-radius:var(--radius-xl)}}
 .mh{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px}
@@ -351,15 +352,36 @@ pre.code{background:oklch(0.1288 0.0406 264.7);color:oklch(0.9 0.05 140);padding
 .maperr p{margin:6px 0}
 .dark .leaflet-control-attribution{background:oklch(0.2077 0.0398 265.75 / .8)!important;color:var(--muted-foreground)}
 .dark .leaflet-control-attribution a{color:var(--muted-foreground)}
+
+/* ---------- Ingreso ---------- */
+.login{min-height:100vh;display:grid;place-items:center;padding:24px 16px;background:radial-gradient(80% 60% at 15% 0%,color-mix(in srgb,var(--primary) 22%,transparent),transparent 70%),radial-gradient(70% 60% at 100% 100%,color-mix(in srgb,var(--chart-3) 14%,transparent),transparent 70%),var(--background)}
+.lcard{width:min(410px,100%);background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:28px 26px;box-shadow:var(--shadow-2xl)}
+.lbrand{display:flex;gap:11px;align-items:center;margin-bottom:22px}
+.lbrand b{display:block;font-size:16px;font-weight:700;letter-spacing:-.02em}.lbrand small{display:block;font-size:11.5px;color:var(--muted-foreground)}
+.ltag{display:inline-block;background:var(--accent);color:var(--accent-foreground);border:1px solid var(--okline);border-radius:99px;padding:4px 12px;font-size:12px;font-weight:600}
+.lcard h1{font-size:24px;letter-spacing:-.03em;margin:12px 0 4px}
+.pwd{position:relative}.pwd input{padding-right:44px!important}
+.eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;width:34px;height:34px;display:grid;place-items:center;color:var(--muted-foreground);cursor:pointer;border-radius:8px}
+.eye svg{width:18px;height:18px}
+.lmsg{min-height:20px;color:var(--bad);font-size:13px;font-weight:500;margin:2px 0 8px}
+.lbtn{width:100%;padding:12px;font-size:15px}
+.lfoot{text-align:center;margin:16px 0 0}
+.mini-av{width:22px;height:22px;border-radius:50%;display:inline-grid;place-items:center;color:#fff;font-size:10px;font-weight:700;margin-left:-6px}
+#bmap{height:520px;border-radius:var(--radius-lg);border:1px solid var(--border);overflow:hidden}
+@media(max-width:700px){#bmap{height:380px}}
+.sbox.m{background:color-mix(in srgb,var(--mc) 9%,var(--card));border-color:color-mix(in srgb,var(--mc) 32%,var(--border));color:var(--foreground)}
+.sbox.m .sbar i{background:var(--mc)}
+.bsq{width:13px;height:13px;border-radius:4px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)}
 </style>
 </head>
 <body>
 <script>try{const t=(JSON.parse(localStorage.getItem("equipo-en-calle-v1")||"{}").settings||{}).theme;if(t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.classList.add("dark")}catch(e){}</script>
-<div id="app">
+<div id="login" hidden></div>
+<div id="app" hidden>
   <aside id="side">
     <div id="brand"></div>
     <nav id="nav"></nav>
-    <div class="sfoot"><i></i><span id="sfoot">En vivo</span></div>
+    <div class="sfoot"><i></i><span id="sfoot" class="grow">En vivo</span><button class="link" data-act="logout" title="Cerrar sesión">Salir</button></div>
   </aside>
   <div id="scrim" data-act="menu"></div>
   <div class="wrapc">
@@ -369,7 +391,7 @@ pre.code{background:oklch(0.1288 0.0406 264.7);color:oklch(0.9 0.05 140);padding
       <span class="grow"></span>
       <button id="gps" class="pill" data-act="locate" title="Actualizar ubicación"></button>
       <button id="theme" class="iconbtn" data-act="theme" aria-label="Cambiar tema claro u oscuro"></button>
-      <select id="who" class="pill" data-chg="who" aria-label="Entrar como"></select>
+      <span id="who" class="pill"></span>
     </header>
     <main id="main"></main>
   </div>
@@ -468,14 +490,14 @@ function seed(){
 let S;const KEY='equipo-en-calle-v1';let saveFail=false;
 function load(){try{const raw=localStorage.getItem(KEY);if(raw){const d=JSON.parse(raw);if(d&&d.v===1){S=d;migrate();return}}}catch(e){}S=seed();migrate();save()}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S));return true}catch(e){if(!saveFail){saveFail=true;toast('El navegador no deja guardar más datos (espacio lleno o modo privado). Los cambios valen solo en esta sesión.')}return false}}
-const ui={tab:null,period:'mes',asesor:'all',flag:'all',q:'',tier:'all',status:'all',campaignId:null,layers:{clients:true,visits:true,tracks:true}};
+const ui={tab:null,period:'mes',asesor:'all',flag:'all',q:'',tier:'all',status:'all',campaignId:null,layers:{clients:true,visits:true,tracks:true,branches:true}};
 const me=()=>S.users.find(u=>u.id===S.me)||S.users[0];
 const U=id=>S.users.find(u=>u.id===id)||{name:'Sin asignar',color:'#64748b'};
 const asesores=()=>S.users.filter(u=>u.role==='asesor');
 const TABS={
-  asesor:[['hoy','Mi día'],['mapa','Mapa'],['visitas','Mis visitas'],['campanas','Campañas']],
-  supervisor:[['equipo','Equipo'],['mapa','Mapa'],['visitas','Visitas'],['fotos','Fotos'],['clientes','Clientes'],['campanas','Campañas']],
-  gerente:[['resumen','Resumen'],['equipo','Equipo'],['mapa','Mapa'],['visitas','Visitas'],['fotos','Fotos'],['clientes','Clientes'],['campanas','Campañas'],['config','Configuración']]};
+  asesor:[['hoy','Mi día'],['mapa','Mapa'],['sucursales','Sucursales'],['visitas','Mis visitas'],['campanas','Campañas']],
+  supervisor:[['equipo','Equipo'],['mapa','Mapa'],['sucursales','Sucursales'],['visitas','Visitas'],['fotos','Fotos'],['clientes','Clientes'],['campanas','Campañas']],
+  gerente:[['resumen','Resumen'],['equipo','Equipo'],['mapa','Mapa'],['sucursales','Sucursales'],['visitas','Visitas'],['fotos','Fotos'],['clientes','Clientes'],['campanas','Campañas'],['config','Configuración']]};
 const pStart=p=>p==='hoy'?t0():p==='semana'?t0()-6*DAY:p==='mes'?mStart():0;
 const visitsF=(from,aid)=>S.visits.filter(v=>v.ts>=from&&(aid==='all'||v.asesorId===aid)).sort((a,b)=>b.ts-a.ts);
 function lastMap(){const m={};for(const v of S.visits)if(v.clientId&&(!m[v.clientId]||v.ts>m[v.clientId].ts))m[v.clientId]=v;return m}
@@ -579,6 +601,7 @@ function mountMap(){
   const el=$('#map');if(!el)return;if(!M){el.innerHTML='<p class="pad">No se pudo cargar el mapa. Revisá la conexión a internet.</p>';return}
   MAP=M.map(el).setView(CENTER,13);tiles(MAP);MYMK=null;
   const u=me(),isA=u.role==='asesor',aid=isA?u.id:ui.asesor,lm=lastMap(),pts=[];
+  if(ui.layers.branches&&S.branches){const bl=branchLast();S.branches.forEach(b=>M.marker([b.lat,b.lng],{icon:divI(`<div class="bsq" style="background:${mColor(b.marca)}"></div>`,14)}).addTo(MAP).bindPopup(branchPopup(b,bl)))}
   if(ui.layers.tracks)asesores().filter(a=>aid==='all'||a.id===aid).forEach(a=>{const tr=S.tracks[a.id];if(tr&&tr.date===dayKey()&&tr.pts.length>1)M.polyline(tr.pts.map(p=>[p.lat,p.lng]),{color:a.color,weight:4,opacity:.65}).addTo(MAP).bindTooltip('Recorrido de hoy · '+a.name+' · '+fmtM(trackKm(tr)))});
   if(ui.layers.clients)S.clients.filter(c=>aid==='all'||c.asesorId===aid).forEach(c=>{const st=cStatus(c,lm);
     M.circleMarker([c.lat,c.lng],{radius:c.tier==='A'?10:c.tier==='B'?8:6,color:'#fff',weight:2,fillColor:ST_COLOR[st.k],fillOpacity:.95}).addTo(MAP)
@@ -604,6 +627,7 @@ const ICON={
   visitas:sv('<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>'),
   fotos:sv('<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>'),
   clientes:sv('<path d="M4 10v10h16V10"/><path d="M3 10l2-6h14l2 6"/><path d="M10 20v-5h4v5"/>'),
+  sucursales:sv('<path d="M4 21V7l8-4 8 4v14"/><path d="M9 21v-5h6v5"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 13.5h.01M12 13.5h.01M16 13.5h.01"/>'),
   campanas:sv('<path d="M3 10v4h4l8 5V5L7 10H3z"/><path d="M18 9a4 4 0 0 1 0 6"/>'),
   config:sv('<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>'),
   camera:sv('<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>'),
@@ -698,14 +722,73 @@ function applyTheme(){
   const b=$('#theme');if(b)b.innerHTML=d?sv('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'):sv('<path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/>')}
 try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if((S.settings.theme||'auto')==='auto'&&$('#modal').hidden)render()})}catch(e){}
 
+
+/* ============ Ingreso (login) ============
+   Hay dos versiones de este archivo (ejecutivo.html y admin.html); cada una acepta solo sus propias cuentas.
+   Las contraseñas no están escritas: se guarda solo su huella (SHA-256).
+   OJO: en un archivo HTML esto es una puerta de entrada, no seguridad real.
+   Para seguridad real, el ingreso debe validarlo un servidor (por ejemplo, Supabase Auth). */
+const APP_MODE=document.documentElement.dataset.mode==='ejecutivo'?'ejecutivo':'admin';
+const ACCOUNTS={
+  ejecutivo:[{u:'gbazan',h:'b754ce166b70963c1bfc98be1f9cc3e7d4cdf0c3d2759428e65c2f4880d37535',userId:'u1'}],
+  admin:[{u:'admin',h:'8dc014cd246b3259eecd6c7f3e40dc6a467a042119dfc1bbb7bfadb876b8cd2c',userId:'g1'}]};
+const SESSION_KEY='eec-sesion-'+APP_MODE,FAIL_KEY='eec-intentos-'+APP_MODE;
+function sha256(str){
+  str=unescape(encodeURIComponent(str));const rr=(v,a)=>(v>>>a)|(v<<(32-a)),mw=2**32,K=[],H=[],w=[];let res='',n=0;
+  for(let c=2;n<64;c++){let p=true;for(let d=2;d*d<=c;d++)if(c%d===0){p=false;break}if(p){if(n<8)H[n]=(c**.5*mw)|0;K[n++]=(c**(1/3)*mw)|0}}
+  const l=str.length*8;str+='\x80';while(str.length%64-56)str+='\x00';
+  for(let i=0;i<str.length;i++)w[i>>2]|=str.charCodeAt(i)<<((3-i)%4)*8;
+  w[w.length]=(l/mw)|0;w[w.length]=l;let h=H.slice();
+  for(let j=0;j<w.length;){const W=w.slice(j,j+=16),o=h;h=h.slice(0,8);
+    for(let i=0;i<64;i++){const w15=W[i-15],w2=W[i-2],a=h[0],e=h[4];
+      const t1=h[7]+(rr(e,6)^rr(e,11)^rr(e,25))+((e&h[5])^(~e&h[6]))+K[i]+(W[i]=i<16?W[i]:(W[i-16]+(rr(w15,7)^rr(w15,18)^(w15>>>3))+W[i-7]+(rr(w2,17)^rr(w2,19)^(w2>>>10)))|0);
+      const t2=(rr(a,2)^rr(a,13)^rr(a,22))+((a&h[1])^(a&h[2])^(h[1]&h[2]));h=[(t1+t2)|0].concat(h);h[4]=(h[4]+t1)|0}
+    for(let i=0;i<8;i++)h[i]=(h[i]+o[i])|0}
+  for(let i=0;i<8;i++)for(let j=3;j>=0;j--){const b=(h[i]>>(j*8))&255;res+=(b<16?'0':'')+b.toString(16)}
+  return res}
+function getSession(){try{const x=JSON.parse(localStorage.getItem(SESSION_KEY)||'null');if(x&&x.exp>Date.now()&&S.users.some(u=>u.id===x.userId))return x}catch(e){}return null}
+function fails(){try{return JSON.parse(localStorage.getItem(FAIL_KEY)||'{"n":0,"until":0}')}catch(e){return{n:0,until:0}}}
+function showLogin(msg){
+  $('#app').hidden=true;const L=$('#login');L.hidden=false;const adm=APP_MODE==='admin';
+  L.innerHTML=`<div class="login"><form class="lcard" id="lform" autocomplete="on" novalidate>
+    <div class="lbrand"><span class="logo"></span><div><b>${esc(S.company.name)}</b><small>Seguimiento comercial</small></div></div>
+    <span class="ltag">${adm?'Panel de administración':'Acceso de ejecutivos'}</span>
+    <h1>${adm?'Ingresá al panel':'Ingresá a tu día'}</h1>
+    <p class="sub">${adm?'Equipo, mapa, visitas, fotos, clientes y configuración.':'Tus visitas, tu mapa, tus campañas y tu avance del mes.'}</p>
+    <label class="fld"><span>Usuario</span><input id="l-user" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required></label>
+    <label class="fld"><span>Contraseña</span><div class="pwd"><input id="l-pass" type="password" name="password" autocomplete="current-password" required><button type="button" class="eye" data-act="l-eye" aria-label="Mostrar contraseña">${sv('<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>')}</button></div></label>
+    <label class="cb"><input type="checkbox" id="l-keep"><span>Mantener la sesión abierta en este dispositivo</span></label>
+    <div id="l-msg" class="lmsg" role="alert">${msg?esc(msg):''}</div>
+    <button class="btn primary lbtn" type="submit">Ingresar</button>
+    <p class="sub lfoot">${adm?'¿Sos ejecutivo? Abrí <b>ejecutivo.html</b>.':'¿Sos administrador? Abrí <b>admin.html</b>.'}</p>
+  </form></div>`;
+  $('#lform').addEventListener('submit',doLogin);setTimeout(()=>$('#l-user')?.focus(),50)}
+function doLogin(e){
+  e.preventDefault();const f=fails(),msg=$('#l-msg');
+  if(f.until>Date.now())return msg.textContent=`Demasiados intentos. Probá de nuevo en ${Math.ceil((f.until-Date.now())/60000)} min.`;
+  const u=norm($('#l-user').value),p=$('#l-pass').value;if(!u||!p)return msg.textContent='Completá el usuario y la contraseña.';
+  const h=sha256('equipo-en-calle|'+u+'|'+p),acc=ACCOUNTS[APP_MODE].find(a=>a.u===u&&a.h===h);
+  if(!acc){f.n++;if(f.n>=5){f.until=Date.now()+5*60000;f.n=0}try{localStorage.setItem(FAIL_KEY,JSON.stringify(f))}catch(e){}
+    $('#l-pass').value='';$('#l-pass').focus();
+    const other=ACCOUNTS[APP_MODE==='admin'?'ejecutivo':'admin'].some(a=>a.u===u);
+    return msg.textContent=other?`Este usuario no es de ${APP_MODE==='admin'?'administración':'ejecutivos'}. Abrí ${APP_MODE==='admin'?'ejecutivo.html':'admin.html'}.`:f.until>Date.now()?'Demasiados intentos. Esperá 5 minutos.':'Usuario o contraseña incorrectos.'}
+  try{localStorage.removeItem(FAIL_KEY);localStorage.setItem(SESSION_KEY,JSON.stringify({userId:acc.userId,u:acc.u,at:Date.now(),exp:Date.now()+($('#l-keep').checked?30*DAY:12*3600e3)}))}catch(e){}
+  S.me=acc.userId;save();startApp();toast('Bienvenido, '+me().name)}
+function startApp(){$('#login').hidden=true;$('#login').innerHTML='';$('#app').hidden=false;ui.tab=null;ui.asesor='all';render();setTimeout(()=>syncPending(false),1500)}
+function logout(){
+  if(S.jornada[S.me]?.active&&!confirm('Tenés la jornada iniciada. ¿Cerrar sesión igual? Se va a finalizar la jornada.'))return;
+  if(S.jornada[S.me]?.active){S.jornada[S.me].active=false;S.jornada[S.me].end=Date.now()}
+  if(GPS.watchId!=null){navigator.geolocation.clearWatch(GPS.watchId);GPS.watchId=null}
+  closeModal();try{localStorage.removeItem(SESSION_KEY)}catch(e){}save();showLogin()}
+
 /* ============ Render ============ */
 function renderHeader(){
   applyTheme();
   $('#brand').innerHTML=(S.company.logo?`<img src="${S.company.logo}" alt="${esc(S.company.name)}">`:`<span class="logo"></span><div><b>${esc(S.company.name)}</b><small>Seguimiento comercial</small></div>`);
-  $('#who').innerHTML=S.users.map(u=>`<option value="${u.id}" ${u.id===S.me?'selected':''}>${esc(u.name)} · ${ROLE[u.role]}</option>`).join('');
-  const sf=$('#sfoot');if(sf)sf.textContent=`En vivo · ${ROLE[me().role]}${sbClient()?' · Supabase':''}`;updPill()}
+  const yo=me();$('#who').innerHTML=`<span class="mini-av" style="background:${yo.color||'var(--secondary)'}">${initials(yo.name)}</span>${esc(yo.name)}${yo.name===(APP_MODE==='admin'?'Administrador':'Ejecutivo')?'':' · '+(APP_MODE==='admin'?'Administrador':'Ejecutivo')}`;
+  const sf=$('#sfoot');if(sf)sf.textContent=`En vivo · ${APP_MODE==='admin'?'Administración':'Ejecutivo'}${sbClient()?' · Supabase':''}`;updPill()}
 function render(){
-  if(MAP){MAP.remove();MAP=null;MYMK=null}if(CMAP){CMAP.remove();CMAP=null}
+  if(MAP){MAP.remove();MAP=null;MYMK=null}if(CMAP){CMAP.remove();CMAP=null}if(BMAP){BMAP.remove();BMAP=null;BLAYER=null}
   renderHeader();const tabs=TABS[me().role];if(!tabs.some(t=>t[0]===ui.tab))ui.tab=tabs[0][0];
   const np=pendingReqs().length;
   $('#nav').innerHTML=tabs.map(([k,l])=>`${k==='config'?'<div class="navlbl">Administración</div>':''}<button class="tab ${k===ui.tab?'on':''}" data-act="tab" data-id="${k}">${ICON[k]||''}<span>${l}</span>${k==='clientes'&&np?`<span class="badge warn">${np}</span>`:''}</button>`).join('');
@@ -760,6 +843,7 @@ hoy(){
   ${dailyPanel(S.visits.filter(v=>v.asesorId===u.id),'Mis últimas 2 semanas','Tus visitas por día y % verificadas por GPS',false)}
   <div class="card"><div class="ch"><h3 class="grow" style="margin:0">A visitar (${todo.length})</h3><span class="sub">${p?'ordenado por importancia y cercanía':'ubicate para ordenar por cercanía'}</span></div>
   ${todo.length?todo.map(x=>clientRow(x.c,x.st,x.d)).join(''):'<div class="empty">Tenés a todos tus clientes al día. 🎉</div>'}</div>
+  ${nearBranchesHTML()}
   ${pend.length?`<div class="card"><div class="ch"><h3 class="grow" style="margin:0">Campañas: te faltan ${pend.length} comercios</h3><button class="btn sm" data-act="tab" data-id="campanas">Ver recorrido</button></div>
    ${[...new Set(pend.map(x=>x.k))].map(k=>`<div class="sub">${esc(k.name)} · ${pend.filter(x=>x.k===k).length} pendientes</div>`).join('')}</div>`:''}
   <div class="card"><h3>Novedades de tu líder</h3>${news.length?news.map(v=>{const c=v.comments[v.comments.length-1];return `<div class="row" style="cursor:pointer" data-act="detail" data-id="${v.id}"><div class="grow"><div class="t">${esc(v.target.name)}</div><div class="sub">${esc(U(c.by).name)}: “${esc(c.text)}” · ${ago(c.ts)}</div></div></div>`}).join(''):'<div class="sub">Sin comentarios nuevos.</div>'}</div>
@@ -813,6 +897,7 @@ mapa(){
    <label class="chk"><input type="checkbox" data-chg="layer" data-id="clients" ${ui.layers.clients?'checked':''}>Clientes</label>
    <label class="chk"><input type="checkbox" data-chg="layer" data-id="visits" ${ui.layers.visits?'checked':''}>Visitas</label>
    <label class="chk"><input type="checkbox" data-chg="layer" data-id="tracks" ${ui.layers.tracks?'checked':''}>Recorridos de hoy</label>
+   <label class="chk"><input type="checkbox" data-chg="layer" data-id="branches" ${ui.layers.branches?'checked':''}>Sucursales</label>
    <button class="btn sm" data-act="locate">📍 Ubicarme</button></div>
   <div id="map"></div>
   <div class="legend"><span><i style="background:${ST_COLOR.ok}"></i>Al día</span><span><i style="background:${ST_COLOR.vence}"></i>Por vencer</span><span><i style="background:${ST_COLOR.atrasado}"></i>Atrasado</span><span><i style="background:${ST_COLOR.nunca}"></i>Sin visitar</span>
@@ -1022,7 +1107,7 @@ async function vmSave(){
   const btn=$('#vm-save');btn.disabled=true;btn.textContent='Validando en el servidor…';
   // El celular solo manda datos crudos. Distancia, alertas, hora y sello los decide el servidor.
   const off=(R.clockOffset||0)*60000;
-  const payload={clientId:t.clientId||null,campaignId:t.campaignId||null,itemId:t.itemId||null,asesorId:S.me,deviceTs:Date.now()+off,
+  const payload={clientId:t.clientId||null,branchId:t.branchId||null,campaignId:t.campaignId||null,itemId:t.itemId||null,asesorId:S.me,deviceTs:Date.now()+off,
     pos:{lat:p.lat,lng:p.lng,acc:p.acc,ts:p.ts+off,sim:!!p.sim},photo:VM.photo,photoAge:VM.photoAge,mobile:isMobile(),answers:{...VM.answers}};
   let v;try{v=await SERVER.receiveVisit(payload)}catch(e){btn.disabled=false;btn.textContent='Guardar visita';return toast(e.message)}
   S.visits.push(v);
@@ -1185,6 +1270,7 @@ const SECRET='clave-del-servidor-demo';
 const SERVER={
   now:()=>Date.now(),
   target(p){
+    if(p.branchId){const b=S.branches.find(x=>x.id===p.branchId);if(b)return{name:bName(b),lat:b.lat,lng:b.lng}}
     if(p.clientId){const c=S.clients.find(x=>x.id===p.clientId);if(c)return{name:c.name,lat:c.lat,lng:c.lng}}
     const it=S.campaigns.find(k=>k.id===p.campaignId)?.items.find(i=>i.id===p.itemId);return it?{name:it.name,lat:it.lat,lng:it.lng}:null},
   async receiveVisit(p){
@@ -1203,7 +1289,7 @@ const SERVER={
     else flags.push('sin_foto');
     const prev=S.visits.filter(v=>v.asesorId===p.asesorId).sort((a,b)=>b.ts-a.ts)[0];
     if(prev){const h=(now-prev.ts)/3600e3,km=hav(prev.lat,prev.lng,pos.lat,pos.lng)/1000;if(km>2&&h>0&&km/h>120)flags.push('salto_imposible')}
-    const v={id:uid(),clientId:p.clientId||null,target:t,asesorId:p.asesorId,ts:now,serverTs:now,deviceTs:p.deviceTs,skewMin:skew,
+    const v={id:uid(),clientId:p.clientId||null,branchId:p.branchId||null,target:t,asesorId:p.asesorId,ts:now,serverTs:now,deviceTs:p.deviceTs,skewMin:skew,
       lat:+pos.lat.toFixed(6),lng:+pos.lng.toFixed(6),acc:pos.acc,dist:d,flags,verified:!flags.length,photo:null,photoHash,dupOf,
       answers:p.answers,comments:[],campaignId:p.campaignId||null,itemId:p.itemId||null};
     v.seal=sealCode(v);
@@ -1213,7 +1299,7 @@ const SERVER={
 // Firma de la visita: si alguien cambia hora, ubicación, alertas o respuestas, el sello deja de coincidir.
 // En el servidor real se usa HMAC-SHA256 con una clave secreta.
 function sealCode(v){
-  const s=[v.id,v.serverTs||v.ts,v.asesorId,v.clientId||v.itemId||'',v.lat,v.lng,v.acc,v.dist,(v.flags||[]).join(','),v.verified?1:0,v.photoHash||'',JSON.stringify(v.answers||{}),SECRET].join('|');
+  const s=[v.id,v.serverTs||v.ts,v.asesorId,v.clientId||v.itemId||v.branchId||'',v.lat,v.lng,v.acc,v.dist,(v.flags||[]).join(','),v.verified?1:0,v.photoHash||'',JSON.stringify(v.answers||{}),SECRET].join('|');
   let h1=2166136261,h2=5381;for(let i=0;i<s.length;i++){const ch=s.charCodeAt(i);h1=Math.imul(h1^ch,16777619);h2=Math.imul(h2,33)^ch}
   return ((h1>>>0).toString(36)+(h2>>>0).toString(36)).toUpperCase().slice(0,10)}
 const sealOk=v=>!!v.seal&&sealCode(v)===v.seal;
@@ -1244,9 +1330,12 @@ function serverHTML(v){
   ${dup?`<dt>Foto repetida</dt><dd><button class="btn sm" data-act="detail" data-id="${dup.id}">Igual a la de ${esc(dup.target.name)} · ${fmtD(dup.ts)}</button></dd>`:''}</dl>`}
 function migrate(){
   S.settings={maxSkew:5,clockOffset:0,dupDist:6,mobileOnly:true,...S.settings};
+  const u1=S.users.find(u=>u.id==='u1');if(u1&&u1.name==='María González')u1.name='G. Bazán';
+  const g1=S.users.find(u=>u.id==='g1');if(g1&&g1.name==='Ana Villalba')g1.name='Administrador';
   if(['#0f766e','#16a34a'].includes(S.company.color))S.company.color='';
   S.clients.forEach(c=>{if(!c.locHistory)c.locHistory=[]});
   S.visits.forEach(v=>{if(!v.serverTs)v.serverTs=v.ts;if(!v.deviceTs)v.deviceTs=v.ts;if(v.skewMin==null)v.skewMin=0;if(!v.seal)v.seal=sealCode(v)});
+  if(!Array.isArray(S.branches))S.branches=BRANCHES_DEFAULT.map(b=>({...b}));
   if(!S.locRequests){
     S.locRequests=[];const c=S.clients.find(x=>x.id==='c4');
     if(c){const a=c.asesorId,home={lat:+(c.lat+0.012).toFixed(6),lng:+(c.lng-0.009).toFixed(6)};
@@ -1285,7 +1374,7 @@ const slug=s=>norm(s).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40
 const pad2=n=>String(n).padStart(2,'0');
 const isoDay=ts=>{const d=new Date(ts);return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate())};
 function visitPath(v){const d=new Date(v.serverTs||v.ts);return `${isoDay(d)}/${slug(U(v.asesorId).name)}-${v.asesorId}/${pad2(d.getHours())}${pad2(d.getMinutes())}_${slug(v.target.name)}_${v.id}.jpg`}
-function visitMeta(v){return{id:v.id,comercio:v.target.name,cliente_id:v.clientId,asesor:U(v.asesorId).name,asesor_id:v.asesorId,
+function visitMeta(v){return{id:v.id,comercio:v.target.name,cliente_id:v.clientId,sucursal_id:v.branchId||null,asesor:U(v.asesorId).name,asesor_id:v.asesorId,
   hora_servidor:new Date(v.serverTs||v.ts).toISOString(),hora_celular:new Date(v.deviceTs||v.ts).toISOString(),diferencia_hora_min:v.skewMin||0,
   latitud:v.lat,longitud:v.lng,precision_m:v.acc,distancia_al_comercio_m:v.dist,ubicacion_comercio:{latitud:v.target.lat,longitud:v.target.lng},
   verificada:v.verified,alertas:v.flags.map(f=>FLAGS[f]),sello:v.seal,huella_foto:v.photoHash,foto_repetida_de:v.dupOf,
@@ -1380,6 +1469,103 @@ async function fxZip(){
   saveBlob(blob,`fotos-visitas_${FX.from}_al_${FX.to}.zip`);if(z)z.textContent='⬇ Descargar todo (ZIP)';toast(`ZIP listo con ${n} fotos`)}
 VIEWS.fotos=fotosView;
 
+
+/* ============ Sucursales de aliados ============
+   Datos iniciales cargados desde "Sucursales de aliados.xlsx" (125 sucursales).
+   El administrador puede actualizarlas desde un Excel con las mismas columnas. */
+const BRANCHES_DEFAULT=[{"id":"b1","marca":"Credi Ágil","depto":"Asunción","fran":"Aupar S.A.","suc":"Azara","dir":"Azara nº 248 e/ Iturbe y Yegros","lat":-25.285378,"lng":-57.633886},{"id":"b2","marca":"Credi Ágil","depto":"San Pedro","fran":"Aupar S.A.","suc":"Santani","dir":"Avda. Zoilo González c/ Tte. Adolfo Mello","lat":-24.664797,"lng":-56.443882},{"id":"b3","marca":"Credi Ágil","depto":"Misiones","fran":"Aupar S.A.","suc":"San Ignacio","dir":"Mcal. Estigarribia Nro 1369 E/ Justiniano Rodas y Boqueron","lat":-26.886505,"lng":-57.0297},{"id":"b4","marca":"Credi Ágil","depto":"Concepción","fran":"Aupar S.A.","suc":"Concepción","dir":"Presidente Franco esq. Yegros y 14 de Mayo","lat":-23.407647,"lng":-57.443131},{"id":"b5","marca":"Credi Ágil","depto":"San Pedro","fran":"Aupar S.A.","suc":"Santa rosa del aguaray","dir":"Ruta 3 al costado del edificio Mendeztel","lat":-23.82567,"lng":-56.519207},{"id":"b6","marca":"Credi Ágil","depto":"San Pedro","fran":"Aupar S.A.","suc":"San Pedro del Ykuamandujy","dir":"Braulio Zelada esq. Independencia Nacional","lat":-24.089617,"lng":-57.075628},{"id":"b7","marca":"Credi Ágil","depto":"Canindeyú","fran":"Aupar S.A.","suc":"Curuguaty","dir":"Avda. 14 de Mayo y Nanawa","lat":-24.471107,"lng":-55.693275},{"id":"b8","marca":"Credi Ágil","depto":"Amambay","fran":"Aupar S.A.","suc":"Pedro Juan Caballero","dir":"Avda. Tte. Herrero c/ Curupayty","lat":-22.540906,"lng":-55.734914},{"id":"b9","marca":"Credi Ágil","depto":"Amambay","fran":"Aupar S.A.","suc":"Saltos del Guaira","dir":"Defensa Nacional c/ Avda. Bernardino Caballero","lat":-24.067704,"lng":-54.307199},{"id":"b10","marca":"Credi Ágil","depto":"Ñeembucú","fran":"Aupar S.A.","suc":"Pilar","dir":"Avda. Antequera entre Paolo Alberzoni y Tacuary","lat":-26.859109,"lng":-58.300287},{"id":"b11","marca":"Credi Ágil","depto":"Concepción","fran":"Aupar S.A.","suc":"Horqueta","dir":"Brasil c/ Mcal. López","lat":-23.345551,"lng":-57.047073},{"id":"b12","marca":"Credi Ágil","depto":"Canindeyú","fran":"Aupar S.A.","suc":"Katuete","dir":"Ruta Py3 esq. Asunción Flores (al lado de Andropar)","lat":-24.246389,"lng":-54.760472},{"id":"b13","marca":"Credi Ágil","depto":"Asunción","fran":"Avanti G. S.A.","suc":"Artigas","dir":"Avda. Gral. José Gervacio Artigas esq. Gral. Delgado","lat":-25.253644,"lng":-57.580125},{"id":"b14","marca":"Credi Ágil","depto":"Central","fran":"Avanti G. S.A.","suc":"Capiata I","dir":"Ruta 1 Mcal Francisco Solano López Km 16,800","lat":-25.365016,"lng":-57.481968},{"id":"b15","marca":"Credi Ágil","depto":"Central","fran":"Avanti G. S.A.","suc":"Itaugua","dir":"Gral. Caballero c/ Mcal. Estigarribia Km. 33","lat":-25.393926,"lng":-57.351062},{"id":"b16","marca":"Credi Ágil","depto":"Central","fran":"Avanti G. S.A.","suc":"Avelino","dir":"Avda. Avelino Martinez c/ Paz del Chaco- Super Kingo","lat":-25.355513,"lng":-57.542912},{"id":"b17","marca":"Credi Ágil","depto":"Central","fran":"Avanti G. S.A.","suc":"Luque - San Lorenzo","dir":"Av. Eugenio A. Garay c/ Alfonso Rodriguez","lat":-25.310959,"lng":-57.506126},{"id":"b18","marca":"Credi Ágil","depto":"San Pedro","fran":"Avanti G. S.A.","suc":"Guajayví","dir":"Ruta 3, Km. 244","lat":-24.529544,"lng":-56.4063},{"id":"b19","marca":"Credi Ágil","depto":"Central","fran":"Avanti G. S.A.","suc":"Caacupemi","dir":"Avda. Las Residentas c/ C. Fausto Aranda, Barrio Caacupemí","lat":-25.296907,"lng":-57.421864},{"id":"b20","marca":"Credi Ágil","depto":"Central","fran":"Lonquimay S.A.","suc":"Lambaré","dir":"Avda. Cacique Lambaré esq. Augusto Roa Bastos","lat":-25.342448,"lng":-57.60398},{"id":"b21","marca":"Credi Ágil","depto":"Central","fran":"Lonquimay S.A.","suc":"Villa Elisa","dir":"Calle Colombia c/ Av. Von Poleski - Supermercado Stock","lat":-25.367354,"lng":-57.586001},{"id":"b22","marca":"Credi Ágil","depto":"Central","fran":"Lonquimay S.A.","suc":"Ypane","dir":"Ruta Colonia Thompson dentro del predio del hipermercado Luisito","lat":-25.451723,"lng":-57.515693},{"id":"b23","marca":"Credi Ágil","depto":"Central","fran":"Lonquimay S.A.","suc":"Ypacarai","dir":"Mariscal Jose Felix Estigarribia c/ Cabañas","lat":-25.402086,"lng":-57.29139},{"id":"b24","marca":"Credi Ágil","depto":"Alto Paraná","fran":"Lonquimay S.A.","suc":"Pte. Franco","dir":"Mcal Lopez casi Uruaguay","lat":-25.560078,"lng":-54.616021},{"id":"b25","marca":"Credi Ágil","depto":"Asunción","fran":"Bosamaz","suc":"Centro","dir":"OLIVA N° 344 ENTRE CHILE Y ALBERDI","lat":-25.283046,"lng":-57.636192},{"id":"b26","marca":"Credi Ágil","depto":"Asunción","fran":"Bosamaz","suc":"Multiplaza","dir":"RUTA MCAL. ESTIGARRIBIA KM 5 TORRE A LOCAL 13 SHOPPING MULTIPLAZA","lat":-25.316126,"lng":-57.571674},{"id":"b27","marca":"Credi Ágil","depto":"Central","fran":"Bosamaz","suc":"San Lorenzo","dir":"Ruta Mcal. Estigarribia Nº 1747 esq. Julia Miranda Cueto","lat":-25.345514,"lng":-57.513721},{"id":"b28","marca":"Credi Ágil","depto":"Central","fran":"Bosamaz","suc":"Luque","dir":"Azara casi Cerro Corá","lat":-25.268295,"lng":-57.487228},{"id":"b29","marca":"Credi Ágil","depto":"Asunción","fran":"Bosamaz","suc":"Pinoza","dir":"Avda. Eusebio Ayala casi Bernardino Caballero","lat":-25.303908,"lng":-57.610122},{"id":"b30","marca":"Credi Ágil","depto":"Paraguarí","fran":"Bosamaz","suc":"Carapegua","dir":"Mcal. Estigarribia 737 c/ Ruta 1 Mcal. Francisco S. Lopez","lat":-25.768157,"lng":-57.242264},{"id":"b31","marca":"Credi Ágil","depto":"Central","fran":"Bosamaz","suc":"Villeta","dir":"Av. Mcal Lopez entre Lomas Valentinas y Humaita","lat":-25.507034,"lng":-57.566017},{"id":"b32","marca":"Credi Ágil","depto":"Central","fran":"Bosamaz","suc":"Aregua","dir":"La candelaria y Gabriel Casaccia Local nº 2 - Galeria Aregua","lat":-25.308326,"lng":-57.385162},{"id":"b33","marca":"Credi Ágil","depto":"Paraguarí","fran":"Bosamaz","suc":"Paraguari","dir":"Ruta 1 Mcal. Lopez Esq/ lomas valentinas","lat":-25.620945,"lng":-57.153197},{"id":"b34","marca":"Credi Ágil","depto":"Paraguarí","fran":"Bosamaz","suc":"Ybycuí","dir":"Avda. Bernardino Caballero","lat":-26.01722,"lng":-57.019864},{"id":"b35","marca":"Credi Ágil","depto":"Paraguarí","fran":"Bosamaz","suc":"Quiindy","dir":"Ruta PY01 entre Carmelo Peralta y San Lorenzo","lat":-25.975768,"lng":-57.234399},{"id":"b36","marca":"Credi Ágil","depto":"Guairá","fran":"Covica S.A.","suc":"Villarrica","dir":"San Roque Gonzalez esq. Cnel. Bogado","lat":-25.780235,"lng":-56.447426},{"id":"b37","marca":"Credi Ágil","depto":"Caaguazú","fran":"Covica S.A.","suc":"Coronel Oviedo","dir":"Tuyuti /Antonio Vera Centurion","lat":-25.450212,"lng":-56.443417},{"id":"b38","marca":"Credi Ágil","depto":"Caaguazú","fran":"Covica S.A.","suc":"Caaguazú","dir":"Bernardino Caballero e/ Walter Insfran y Delfin Chamorro","lat":-25.463039,"lng":-56.01899},{"id":"b39","marca":"Credi Ágil","depto":"Caazapá","fran":"Covica S.A.","suc":"San Juan Nepomuceno","dir":"Calle San Juan entre P'i Farña y Fulgencio Yegros Bº San José","lat":-26.111527,"lng":-55.941706},{"id":"b40","marca":"Credi Ágil","depto":"Caazapá","fran":"Covica S.A.","suc":"Yuty","dir":"Natividad entre Independencia Nacional y 14 de mayo-Barrio Santa Ines","lat":-26.616512,"lng":-56.247925},{"id":"b41","marca":"Credi Ágil","depto":"Caazapá","fran":"Covica S.A.","suc":"Caazapa","dir":"Calle Uruguay -entre Avda Mcal Estigarribia y Colon.","lat":-26.198236,"lng":-56.368195},{"id":"b42","marca":"Credi Ágil","depto":"Alto Paraná","fran":"Covica S.A.","suc":"Hernandarias","dir":"Avda. Las acacias esq. Chaco boreal","lat":-25.394976,"lng":-54.636108},{"id":"b43","marca":"Credi Ágil","depto":"Caaguazú","fran":"Covica S.A.","suc":"Campo 9","dir":"Emiliano. R Fernandez entre José A. Flores y Raul Peña","lat":-25.375653,"lng":-55.701649},{"id":"b44","marca":"Credi Ágil","depto":"Alto Paraná","fran":"Covica S.A.","suc":"CDE Km. 4","dir":"Avda. Mcal López (Supercarretera) c/ el Trébol","lat":-25.508327,"lng":-54.639385},{"id":"b45","marca":"Credi Ágil","depto":"Alto Paraná","fran":"Covica S.A.","suc":"CDE Abasto","dir":"Avda Gral. Bernardino Caballero","lat":-25.534458,"lng":-54.609852},{"id":"b46","marca":"Credi Ágil","depto":"Alto Paraná","fran":"Covica S.A.","suc":"Minga Guazu","dir":"Calle 16 Acaray esq. Mariscal Jose F. Estigarribia","lat":-25.485328,"lng":-54.759396},{"id":"b47","marca":"Credi Ágil","depto":"Alto Paraná","fran":"Covica S.A.","suc":"Santa Rita","dir":"Alejo Garcia entre Fulgencio R. Moreno y Avda. Santa Rita","lat":-25.800093,"lng":-55.089421},{"id":"b48","marca":"Credi Ágil","depto":"Alto Paraná","fran":"Covica S.A.","suc":"Mallorquin","dir":"Avda. Dr. Juan León Mallorquín e/ Gral. Patricio Colman y Delfín Ugarte","lat":-25.437351,"lng":-55.254451},{"id":"b49","marca":"Credi Ágil","depto":"Alto Paraná","fran":"Covica S.A.","suc":"San Alberto","dir":"Avda. Mariscal López esquina irineia","lat":-24.968315,"lng":-54.92445},{"id":"b50","marca":"Credi Ágil","depto":"Alto Paraná","fran":"Covica S.A.","suc":"Pte. Franco","dir":"Doctor Montanaro c/ Avda. Monday","lat":-25.558914,"lng":-54.60725},{"id":"b51","marca":"Credi Ágil","depto":"Alto Paraná","fran":"Covica S.A.","suc":"CDE KM 7","dir":"Avda. San José c/ Avda. Julio C. Riquelme","lat":-25.507217,"lng":-54.668438},{"id":"b52","marca":"Credi Ágil","depto":"Asunción","fran":"Luar S.A.","suc":"Quinta","dir":"Avda. Estados Unidos Nº 1732 entre 5ta proyectadas y 6ta proyectada","lat":-25.299023,"lng":-57.63472},{"id":"b53","marca":"Credi Ágil","depto":"Central","fran":"Luar S.A.","suc":"Reducto","dir":"Avda. de la Victoria frente a parada de Linea 12","lat":-25.385061,"lng":-57.496784},{"id":"b54","marca":"Credi Ágil","depto":"Itapúa","fran":"Luar S.A.","suc":"Cambyreta","dir":"Ruta 14 y Avda. La Paz","lat":-27.34267,"lng":-55.8462},{"id":"b55","marca":"Credi Ágil","depto":"Itapúa","fran":"Parametro Interior","suc":"Encarnación","dir":"Cristo Rey c/ Don Gill Río","lat":-27.349779,"lng":-55.856693},{"id":"b56","marca":"Credi Ágil","depto":"Itapúa","fran":"Parametro Interior","suc":"Ma. Auxiliadora","dir":"Av. Maria Auxiliadora c/ Indepencia Nacional","lat":-26.527672,"lng":-55.261675},{"id":"b57","marca":"Credi Ágil","depto":"Itapúa","fran":"Parametro Interior","suc":"Hohenau","dir":"GUILLERMO CLOSS E/ 14 DE MAYO Y FULGENCIO YEGROS","lat":-27.081541,"lng":-55.648838},{"id":"b58","marca":"Credi Ágil","depto":"Itapúa","fran":"Parametro Interior","suc":"Coronel Bogado","dir":"Ruta I Mcal. Francisco Solano Lopez nº 301 esq. Defensores del Chaco","lat":-27.155655,"lng":-56.233543},{"id":"b59","marca":"Credi Ágil","depto":"Itapúa","fran":"Parametro Interior","suc":"Encarnación 2","dir":"Tomas Romero Pereira casi Mcal. Estigarribia","lat":-27.331695,"lng":-55.866185},{"id":"b60","marca":"Credi Ágil","depto":"Itapúa","fran":"Parametro Interior","suc":"San Pedro del Paraná","dir":"Capitán Leguizamón e/ Gregorio Cabrera González","lat":-26.832311,"lng":-56.204888},{"id":"b61","marca":"Credi Ágil","depto":"Itapúa","fran":"Parametro Interior","suc":"Mayor Otaño","dir":"Av mcal lopez e/ oliva y españa","lat":-26.349227,"lng":-54.725647},{"id":"b62","marca":"Credi Ágil","depto":"Itapúa","fran":"Parametro Interior","suc":"Natalio","dir":"Av. los lapachos e/ av Caballero y Cerro cora","lat":-26.757288,"lng":-55.137888},{"id":"b63","marca":"Credi Ágil","depto":"Central","fran":"Parametro S.A.","suc":"J.A Saldivar","dir":"Ruta a Guarambare y 24 de Septiembre","lat":-25.449292,"lng":-57.438787},{"id":"b64","marca":"Credi Ágil","depto":"Central","fran":"Parametro S.A.","suc":"Acceso Sur","dir":"Avda. Acceso Sur Nº 947","lat":-25.347793,"lng":-57.575755},{"id":"b65","marca":"Credi Ágil","depto":"Asunción","fran":"Parametro S.A.","suc":"Pettirossi","dir":"Avda. Silvio Pettirossi e/ Pa’í Perez y Avda. Perú","lat":-25.295555,"lng":-57.62413},{"id":"b66","marca":"Credi Ágil","depto":"Central","fran":"Parametro S.A.","suc":"Mcal. Lopez","dir":"Avenida Mcal. Lopez c/ Waldino Ramon Lovera","lat":-25.311682,"lng":-57.530064},{"id":"b67","marca":"Credi Ágil","depto":"Central","fran":"Parametro S.A.","suc":"Capiata 3","dir":"Ruta Capiata Thompson Ypane c/ Federico Chavez","lat":-25.395773,"lng":-57.47201},{"id":"b68","marca":"Credi Ágil","depto":"Central","fran":"Parametro S.A.","suc":"Abasto","dir":"Defensores del chaco esq Mcal. Estigarribia","lat":-25.342575,"lng":-57.586728},{"id":"b69","marca":"Credi Ágil","depto":"Central","fran":"ZAE I","suc":"Mariano R. Alonso","dir":"Boqueron e/ del Carmen","lat":-25.212926,"lng":-57.53055},{"id":"b70","marca":"Credi Ágil","depto":"Asunción","fran":"ZAE I","suc":"Villa Morra","dir":"Republica Argentina c/ Avda. Dr. Guido Boggiani","lat":-25.297388,"lng":-57.578256},{"id":"b71","marca":"Credi Ágil","depto":"Central","fran":"ZAE I","suc":"Fernando de la Mora","dir":"Ruta Mcal. Estigarribia C/ Y tororo - Shopping Badhemia","lat":-25.328424,"lng":-57.545746},{"id":"b72","marca":"Credi Ágil","depto":"Central","fran":"ZAE I","suc":"Ñemby","dir":"9 de Agosto esq. Ytororo","lat":-25.393885,"lng":-57.545296},{"id":"b73","marca":"Credi Ágil","depto":"Central","fran":"ZAE I","suc":"Luque 2","dir":"TTE. RIVAS ESQUINA ROSA GONZÁLEZ","lat":-25.263583,"lng":-57.513194},{"id":"b74","marca":"Credi Ágil","depto":"Central","fran":"ZAE II","suc":"Capiata II","dir":"Ruta 2 Mcal. Estigarribia Km 19,5","lat":-25.351824,"lng":-57.44474},{"id":"b75","marca":"Credi Ágil","depto":"Cordillera","fran":"ZAE II","suc":"Caacupé","dir":"Ruta 2 Mcal. Estigarribia entre Eligio Ayala y Ayala Solís","lat":-25.384054,"lng":-57.140263},{"id":"b76","marca":"Credi Ágil","depto":"Central","fran":"ZAE II","suc":"Itá","dir":"Ruta 1 Mcal. Lopez C/ Independencia Nacional entre Gral. Caballero","lat":-25.50771,"lng":-57.358547},{"id":"b77","marca":"Credi Ágil","depto":"Central","fran":"ZAE II","suc":"Guarambare","dir":"Teniente Nicasio Insaurralde c/ Leandro Pineda","lat":-25.489208,"lng":-57.45483},{"id":"b78","marca":"Credi Ágil","depto":"Central","fran":"ZAE II","suc":"San Antonio","dir":"Acceso Sur c/ Puerta del Sol","lat":-25.420821,"lng":-57.538877},{"id":"b79","marca":"Credi Ágil","depto":"Cordillera","fran":"ZAE II","suc":"Eusebio Ayala","dir":"Independencia Nacional c/ Carlos A. Lopez","lat":-25.382316,"lng":-56.962682},{"id":"b80","marca":"Credi Ágil","depto":"Cordillera","fran":"ZAE II","suc":"San Bernardino","dir":"Luis F. Vache y Emilio Hassler","lat":-25.309999,"lng":-57.298309},{"id":"b81","marca":"Credi Ágil","depto":"Cordillera","fran":"ZAE II","suc":"Tobati","dir":"Avda.Capitán Pedro Juan Caballero entre Estrella y Palma","lat":-25.26283,"lng":-57.083704},{"id":"b82","marca":"Credi Ágil","depto":"Cordillera","fran":"ZAE II","suc":"Emboscada","dir":"Mayor Avalos Sánchez C/ ruta N° 3","lat":-25.124891,"lng":-57.347107},{"id":"b83","marca":"Credi Ágil","depto":"Central","fran":"ZAE II","suc":"Itaugua Guazu","dir":"Avda. Gral. Marcial Samaniego a 200 m del Hospital Nacional de Itaugua","lat":-25.441758,"lng":-57.368279},{"id":"b84","marca":"Credi Ágil","depto":"Cordillera","fran":"ZAE II","suc":"Altos","dir":"Avda Guillermo Naumann casi Amambay","lat":-25.266626,"lng":-57.251204},{"id":"b85","marca":"Credi Ágil","depto":"Cordillera","fran":"ZAE II","suc":"Piribebuy","dir":"General Díaz c/ Iturbe","lat":-25.463215,"lng":-57.043609},{"id":"b86","marca":"Credi Ágil","depto":"Asunción","fran":"ZAE III","suc":"Loma Pyta","dir":"Ruta Transchaco KM 11,5 Frente al Tunel Semidei","lat":-25.245008,"lng":-57.5481},{"id":"b87","marca":"Credi Ágil","depto":"Presidente Hayes","fran":"ZAE III","suc":"Villa Hayes","dir":"Ruta Transchaco c/ Laudo Hayes","lat":-25.090656,"lng":-57.532059},{"id":"b88","marca":"Credi Ágil","depto":"Asunción","fran":"ZAE III","suc":"Terminal","dir":"Avda. Fernando de la Mora c/ Médicos del Chaco","lat":-25.324566,"lng":-57.600235},{"id":"b89","marca":"Credi Ágil","depto":"Central","fran":"ZAE III","suc":"San Lorenzo - Ñemby","dir":"Manuel Ortiz Guerrero c/ Campo Jordán","lat":-25.36494,"lng":-57.515871},{"id":"b90","marca":"Credi Ágil","depto":"Central","fran":"ZAE III","suc":"Luque -Aregua","dir":"Avda. de las Residentas N° 5445","lat":-25.289375,"lng":-57.455776},{"id":"b91","marca":"Credi Ágil","depto":"Central","fran":"ZAE III","suc":"Limpio","dir":"Abasto norte Limpio","lat":-25.176444,"lng":-57.483696},{"id":"b92","marca":"Credimarket","depto":"Central","fran":"CREDIFLASH","suc":"LUQUE","dir":"Avda. Balderrama c/ Cerro Corá","lat":-25.268606,"lng":-57.490174},{"id":"b93","marca":"Credimarket","depto":"Central","fran":"CREDIFLASH","suc":"MARIANO R. ALONSO","dir":"Ruta Transchaco Km. 13 casi Coronel Irrazabal","lat":-25.223954,"lng":-57.53356},{"id":"b94","marca":"Credimarket","depto":"Central","fran":"CREDIFLASH","suc":"SAN LORENZO","dir":"Mariscal Estigarribia c/ Destacamento Cazal frente a Chacomer","lat":-25.346332,"lng":-57.504417},{"id":"b95","marca":"Credimarket","depto":"Central","fran":"CREDIFLASH","suc":"VILLA ELISA","dir":"Avda. Von Poleski casi Navidad","lat":-25.37637,"lng":-57.584803},{"id":"b96","marca":"Credimarket","depto":"Central","fran":"CREDIFLASH","suc":"LIMPIO","dir":"Colón casi Ruta 3 Gral. Elizardo Aquino - Centro de Limpio.","lat":-25.169504,"lng":-57.478844},{"id":"b97","marca":"Credimarket","depto":"Central","fran":"CREDIFLASH","suc":"Lambaré","dir":"Avda. Cacique Lambaré entre Andrés Gill y Testanova","lat":-25.343549,"lng":-57.612809},{"id":"b98","marca":"Credimarket","depto":"Central","fran":"AAN S.A.","suc":"EUSEBIO AYALA","dir":"Avda. Eusebio Ayala N° 836 c/ General Santos","lat":-25.302609,"lng":-57.614509},{"id":"b99","marca":"Credimarket","depto":"Central","fran":"CREDIMARKET","suc":"ACCESO SUR","dir":"Acceso Sur entre Choferes del Chaco y Palma","lat":-25.343767,"lng":-57.581461},{"id":"b100","marca":"Credimarket","depto":"Central","fran":"CREDIMARKET","suc":"CAPIATA","dir":"Ruta 2 km 20 c/ José C. Sosa","lat":-25.357043,"lng":-57.439763},{"id":"b101","marca":"Credimarket","depto":"Central","fran":"CREDIMARKET","suc":"CENTRO","dir":"Eligio Ayala N° 411 c/ Caballero","lat":-25.283395,"lng":-57.63082},{"id":"b102","marca":"Credimarket","depto":"Central","fran":"CREDIMARKET","suc":"FERNANDO DE LA MORA","dir":"Mariscal Estigarribia c/ 1ro de Marzo","lat":-25.322258,"lng":-57.556653},{"id":"b103","marca":"Credimarket","depto":"Central","fran":"CREDIMARKET","suc":"ITA","dir":"Ruta Departamental 01 c/ Presidente Franco","lat":-25.508579,"lng":-57.356593},{"id":"b104","marca":"Credimarket","depto":"Central","fran":"CREDIMARKET","suc":"MARIANO R. ALONSO","dir":"Ruta Transchaco entre Josefina Plá y Doña Maxima Lugo","lat":-25.238193,"lng":-57.541893},{"id":"b105","marca":"Tking Credit","depto":"Alto Paraná","fran":"Tking Credit","suc":"Ciudad del Este","dir":"Km4 - Sobre Cnel.José J. Sánchez,casi avda San Blas","lat":-25.506893,"lng":-54.636145},{"id":"b106","marca":"Tking Credit","depto":"Caaguazú","fran":"Tking Credit","suc":"Coronel Oviedo","dir":"Dr. Blas Garay esquina Juan E'oleari Frente a la Catedral Virgen del Rosario, al lado de Personal.","lat":-25.446808,"lng":-56.439967},{"id":"b107","marca":"Tking Credit","depto":"Caaguazú","fran":"Tking Credit","suc":"Caaguazú","dir":"General Eduvigis Díaz entre General Bernardino Caballero y Coronel Manuel A. Godoy","lat":-25.461426,"lng":-56.018145},{"id":"b108","marca":"Tking Credit","depto":"Itapúa","fran":"Tking Credit","suc":"Encarnación","dir":"General Artigas entre Constitción Nacional y 25 de Mayo A media cuadra de Hotel Moan","lat":-27.328893,"lng":-55.869756},{"id":"b109","marca":"Tking Credit","depto":"Asunción","fran":"Tking Credit","suc":"Central","dir":"Avda. Eusebio Ayala entre R.I. 3 Corrales y R.I 6 Boqueron edificio Lion 3° Piso, frente a Luisito Eusebio Ayala","lat":-25.314962,"lng":-57.578062},{"id":"b110","marca":"Tking Credit","depto":"San Pedro","fran":"Tking Credit","suc":"San Estanislado","dir":"Coronel Z. Gonzalez c/ Mcal. Francisco Solano López al lado de Tiemsa Encomiendas.","lat":-24.662327,"lng":-56.443268},{"id":"b111","marca":"Tking Credit","depto":"Amambay","fran":"Tking Credit","suc":"Pedro Juan Caballero","dir":"Iturbe entre Carlos Antonio López y Mcal. Francisco Solano López","lat":-22.543495,"lng":-55.729895},{"id":"b112","marca":"Tking Credit","depto":"San Pedro","fran":"Tking Credit","suc":"Santa Rosa del Aguaray","dir":"Ruta Nacional 11 Al lado de Odonto Excellence, a dos locales de Doña Arsenia Empanadas.","lat":-23.827046,"lng":-56.518672},{"id":"b113","marca":"Tking Credit","depto":"Concepción","fran":"Tking Credit","suc":"Concepción","dir":"Presidente Franco casi Avda. Agustin Fernando de Pineda al lado de Electroban","lat":-23.407725,"lng":-57.441748},{"id":"b114","marca":"Tking Credit","depto":"Alto Paraná","fran":"Tking Credit","suc":"Ciudad del Este km4 IA","dir":"Av. Mariscal Lopez 140, entre Fortin Pirizal y Monseñor Rodriguez, Edificio Malu. Km4.","lat":-25.50911,"lng":-54.639611},{"id":"b115","marca":"Tking Credit","depto":"Guairá","fran":"Tking Credit","suc":"Villarrica","dir":"Carlos Antonio Lopez entre Boulevard Bicentenario y Doctor Bottrel","lat":-25.775806,"lng":-56.446478},{"id":"b116","marca":"Tking Credit","depto":"Alto Paraná","fran":"Tking Credit","suc":"Santa Rita","dir":"Sobre la Calle de servicio de la ruta 6ta - Tramo Norte, al lado de loteamiento Valle Verde.","lat":-25.785576,"lng":-55.08129},{"id":"b117","marca":"Tking Credit","depto":"Cordillera","fran":"Tking Credit","suc":"Caacupe","dir":"Dr. Eligio Ayala, entre Asunción y Padre Solis","lat":-25.384561,"lng":-57.139105},{"id":"b118","marca":"Tking Credit","depto":"Canindeyú","fran":"Tking Credit","suc":"Curuguaty","dir":"Pa'i Lucke casi 14 de Mayo","lat":-24.473413,"lng":-55.691745},{"id":"b119","marca":"Tking Credit","depto":"Caaguazú","fran":"Tking Credit","suc":"Campo 9","dir":"Emiliano. R Fernandez entre proceres de mayo y 1° junta municipal","lat":-25.372929,"lng":-55.701429},{"id":"b120","marca":"Tking Credit","depto":"Alto Paraná","fran":"Tking Credit","suc":"Hernandarias","dir":"Sobre Acosta Ñu, frente a BNF.","lat":-25.39925,"lng":-54.641788},{"id":"b121","marca":"Tking Credit","depto":"Central","fran":"Tking Credit","suc":"Luque","dir":"Sobre Calle 14 De Mayo casi balderrama frente a Koala Colchones.","lat":-25.269516,"lng":-57.48978},{"id":"b122","marca":"Lleva ya","depto":"Central","fran":"Lleva ya","suc":"Asunción","dir":"Complejo la Torre","lat":-25.286015,"lng":-57.575015},{"id":"b123","marca":"GM","depto":"Central","fran":"GM","suc":"Luque","dir":"Cerro Cora c/ Dr. Gaspar Rodriguez de Francia","lat":-25.267489,"lng":-57.492051},{"id":"b124","marca":"GM","depto":"Central","fran":"GM","suc":"San Lorenzo","dir":"RUTA MARISCAL ESTIGARRIBIA , DESVIO RUTA 1","lat":-25.343666,"lng":-57.50326},{"id":"b125","marca":"Kim","depto":"Central","fran":"Kim","suc":"Villa Elisa","dir":"AVDA. VON POLESKI S/N CASI CAAPUCU - GALERIA VICTORY - SALON 1B Y 2B,","lat":-25.368444,"lng":-57.586184}];
+const DEPTO_FIX={'coordillera':'Cordillera','cordillera':'Cordillera','itapua':'Itapúa','encarnacion':'Itapúa','caazapa':'Caazapá','canindeju':'Canindeyú','canindeyu':'Canindeyú','guaira':'Guairá',
+  'capital':'Asunción','asuncion':'Asunción','coronel oviedo':'Caaguazú','caaguazu':'Caaguazú','santani':'San Pedro','santa rosa del aguaray':'San Pedro','pedro juan caballero':'Amambay',
+  "ne'embucu":'Ñeembucú','neembucu':'Ñeembucú','alto parana':'Alto Paraná','paraguari':'Paraguarí','concepcion':'Concepción'};
+const normDepto=d=>DEPTO_FIX[norm(d)]||d;
+const MARCA_COLOR={'Credi Ágil':'#65a30d','Tking Credit':'#2563eb','Credimarket':'#9333ea','GM':'#ea580c','Lleva ya':'#db2777','Kim':'#0d9488'};
+const mColor=m=>MARCA_COLOR[m]||'#64748b';
+const bName=b=>`${b.fran} · ${b.suc}`;
+const uniq=a=>[...new Set(a.filter(Boolean))].sort((x,y)=>x.localeCompare(y,'es'));
+function branchLast(){const m={};for(const v of S.visits)if(v.branchId&&(!m[v.branchId]||v.ts>m[v.branchId].ts))m[v.branchId]=v;return m}
+const BF={q:'',marca:'all',fran:'all',depto:'all',sort:'fran'};
+function branchesF(){const q=norm(BF.q);
+  return S.branches.filter(b=>(BF.marca==='all'||b.marca===BF.marca)&&(BF.fran==='all'||b.fran===BF.fran)&&(BF.depto==='all'||b.depto===BF.depto)
+    &&(!q||norm([b.suc,b.fran,b.dir,b.depto,b.marca].join(' ')).includes(q)))}
+function branchPopup(b,bl){
+  const lv=bl[b.id],isA=me().role==='asesor';
+  return `<b>${esc(b.fran)}</b> · ${esc(b.suc)}<br><span style="color:${mColor(b.marca)};font-weight:600">${esc(b.marca)}</span> · ${esc(b.depto)}<br>${esc(b.dir)}
+  <br>${lv?`Última visita ${fmtDT(lv.ts)} · ${esc(U(lv.asesorId).name)}`:'Sin visitas registradas'}
+  <br><a class="btn sm" target="_blank" rel="noopener" href="${gmaps(b.lat,b.lng)}">Cómo llegar</a>${isA?` <button class="btn sm primary" data-act="visit-branch" data-id="${b.id}">Registrar visita</button>`:''}`}
+let BMAP=null,BLAYER=null,BMK={};
+function mountBranchMap(){
+  const el=$('#bmap');if(!el)return;if(!M){el.innerHTML='<p class="pad">No se pudo cargar el mapa. Revisá la conexión a internet.</p>';return}
+  BMAP=M.map(el).setView([-24.6,-57.2],6);tiles(BMAP);BLAYER=M.layerGroup().addTo(BMAP);drawBranches(true);
+  if(GPS.pos)M.marker([GPS.pos.lat,GPS.pos.lng],{icon:divI('<div class="me"></div>',18),zIndexOffset:1000}).addTo(BMAP).bindTooltip('Vos');
+  setTimeout(()=>BMAP&&BMAP.invalidateSize(),120)}
+function drawBranches(fit){
+  if(!BMAP||!BLAYER)return;BLAYER.clearLayers();BMK={};const bl=branchLast(),M0=mStart(),pts=[];
+  branchesF().forEach(b=>{const lv=bl[b.id],vm=lv&&lv.ts>=M0;
+    BMK[b.id]=M.circleMarker([b.lat,b.lng],{radius:8,color:vm?'#22c55e':'#ffffff',weight:vm?3:2,fillColor:mColor(b.marca),fillOpacity:.95}).addTo(BLAYER).bindPopup(branchPopup(b,bl));
+    pts.push([b.lat,b.lng])});
+  if(fit&&pts.length)BMAP.fitBounds(pts,{padding:[30,30],maxZoom:15})}
+function branchRow({b,d},bl,M0,isA){
+  const lv=bl[b.id],vm=lv&&lv.ts>=M0,c=mColor(b.marca);
+  return `<div class="row"><div class="grow"><div class="t">${esc(b.suc)} <span class="badge" style="background:color-mix(in srgb,${c} 14%,transparent);color:${c}">${esc(b.marca)}</span></div>
+  <div class="sub">${esc(b.dir)} · ${esc(b.depto)}${d!=null?' · <b>a '+fmtM(d)+'</b>':''}</div>
+  <div class="badges">${lv?`<span class="badge ${vm?'ok':''}">${vm?'✓ ':''}Última visita ${ago(lv.ts)} · ${esc(U(lv.asesorId).name)}</span>`:'<span class="badge warn">Sin visitas registradas</span>'}</div></div>
+  <div class="acts"><button class="btn sm" data-act="br-focus" data-id="${b.id}">Ver en mapa</button><a class="btn sm" target="_blank" rel="noopener" href="${gmaps(b.lat,b.lng)}">Cómo llegar</a>${isA?`<button class="btn sm primary" data-act="visit-branch" data-id="${b.id}">Registrar visita</button>`:''}</div></div>`}
+function branchListHTML(){
+  const isA=me().role==='asesor',p=GPS.pos,bl=branchLast(),M0=mStart();
+  const list=branchesF().map(b=>({b,d:p?hav(p.lat,p.lng,b.lat,b.lng):null}));
+  if(!list.length)return '<div class="empty card">No hay sucursales con esos filtros.</div>';
+  if(BF.sort==='cerca'&&p){list.sort((x,y)=>x.d-y.d);
+    return `<div class="card"><h3>Más cercanas a tu ubicación</h3>${list.slice(0,40).map(x=>branchRow(x,bl,M0,isA)).join('')}${list.length>40?`<div class="sub" style="padding-top:10px">Mostrando las 40 más cercanas de ${list.length}.</div>`:''}</div>`}
+  const g={};list.forEach(x=>(g[x.b.fran]=g[x.b.fran]||[]).push(x));
+  return `<div class="grid2">${Object.keys(g).sort((a,b)=>a.localeCompare(b,'es')).map(f=>{
+    const arr=g[f].sort((x,y)=>x.b.suc.localeCompare(y.b.suc,'es')),vis=arr.filter(x=>bl[x.b.id]&&bl[x.b.id].ts>=M0).length;
+    return `<div class="card"><div class="ch"><div class="grow"><h3 style="margin:0">${esc(f)}</h3><div class="sub">${esc(uniq(arr.map(x=>x.b.marca)).join(', '))} · ${arr.length} sucursal${arr.length>1?'es':''} · ${esc(uniq(arr.map(x=>x.b.depto)).join(', '))}</div></div>
+    <span class="badge ${vis===arr.length?'ok':vis?'warn':''}">${vis}/${arr.length} este mes</span></div>${bar(vis*100/arr.length)}${arr.map(x=>branchRow(x,bl,M0,isA)).join('')}</div>`}).join('')}</div>`}
+function sucursalesView(){
+  const isA=me().role==='asesor',all=S.branches,list=branchesF(),M0=mStart();
+  const vis=new Set(S.visits.filter(v=>v.branchId&&v.ts>=M0&&(!isA||v.asesorId===S.me)).map(v=>v.branchId));
+  const marcas=uniq(all.map(b=>b.marca)),frans=uniq(all.filter(b=>BF.marca==='all'||b.marca===BF.marca).map(b=>b.fran));
+  const sel=(id,val,opts,label)=>`<select data-chg="bf" data-id="${id}"><option value="all">${label}</option>${opts.map(o=>`<option ${val===o?'selected':''}>${esc(o)}</option>`).join('')}</select>`;
+  const N=list.length||1,topF=uniq(list.map(b=>b.fran)).map(f=>({f,n:list.filter(b=>b.fran===f).length})).sort((a,b)=>b.n-a.n).slice(0,8);
+  return `<h2>Sucursales</h2><p class="lead">${isA?'Las sucursales de los aliados. Registrá tus visitas con GPS y cámara, igual que con tus clientes.':'La red de sucursales de los aliados, con su ubicación y el control de visitas del equipo.'}</p>
+  <div class="kpis">
+    ${kpi('sucursales','g','Sucursales',all.length,`${list.length} con los filtros actuales`)}
+    ${kpi('users','b','Franquicias',uniq(all.map(b=>b.fran)).length,`De ${marcas.length} marcas`)}
+    ${kpi('mapa','a','Departamentos',uniq(all.map(b=>b.depto)).length,'Con sucursales de aliados')}
+    ${kpi('check',vis.size?'g':'r',isA?'Visitadas por vos':'Visitadas este mes',`${vis.size} / ${all.length}`,`${Math.round(vis.size*100/(all.length||1))}% de la red este mes`)}
+  </div>
+  <div class="toolbar"><input type="search" placeholder="Buscar sucursal, franquicia o dirección…" value="${esc(BF.q)}" data-inp="bq">
+   ${sel('marca',BF.marca,marcas,'Todas las marcas')}${sel('fran',BF.fran,frans,'Todas las franquicias')}${sel('depto',BF.depto,uniq(all.map(b=>b.depto)),'Todos los departamentos')}
+   <select data-chg="bf" data-id="sort"><option value="fran" ${BF.sort==='fran'?'selected':''}>Agrupar por franquicia</option><option value="cerca" ${BF.sort==='cerca'?'selected':''}>Más cercanas a mí</option></select>
+   ${isA?'':`<span class="grow"></span><button class="btn sm" data-act="br-export">⬇ Exportar Excel</button><label class="btn sm">Actualizar desde Excel<input type="file" hidden accept=".xlsx,.xls,.csv" data-chg="br-import"></label>`}</div>
+  <div class="panel"><div class="panel-h"><span class="ptag">Red de aliados</span></div><div class="panel-b">
+   <div class="pmain"><div id="bmap"></div><div class="legend">${marcas.map(m=>`<span><i style="background:${mColor(m)}"></i>${esc(m)}</span>`).join('')}<span><i style="background:#fff;box-shadow:0 0 0 2px #22c55e"></i>Visitada este mes</span></div></div>
+   <div class="pside"><h4 class="chart-t">Por marca</h4>${marcas.map(m=>{const n=list.filter(b=>b.marca===m).length;return n?`<div class="sbox m" style="--mc:${mColor(m)}"><div class="t"><span>${esc(m)}</span><span class="mono">${n} · ${Math.round(n*100/N)}%</span></div><div class="sbar"><i style="width:${n*100/N}%"></i></div></div>`:''}).join('')}
+    <h4 class="chart-t" style="margin-top:14px">Franquicias con más sucursales</h4>${topF.map(x=>`<div class="ch" style="margin:6px 0 0"><span class="grow">${esc(x.f)}</span><b>${x.n}</b></div>`).join('')}</div></div></div>
+  <div id="blist">${branchListHTML()}</div>`}
+function nearBranchesHTML(){
+  const p=GPS.pos;if(!p||!S.branches?.length)return '';const bl=branchLast(),M0=mStart();
+  const near=S.branches.map(b=>({b,d:hav(p.lat,p.lng,b.lat,b.lng)})).sort((x,y)=>x.d-y.d).slice(0,3);
+  return `<div class="card"><div class="ch"><h3 class="grow" style="margin:0">Sucursales cerca tuyo</h3><button class="btn sm" data-act="tab" data-id="sucursales">Ver todas</button></div>${near.map(x=>branchRow(x,bl,M0,true)).join('')}</div>`}
+async function importBranches(file){
+  try{const rows=await readSheet(file),out=[];let skip=0;
+    rows.forEach(r=>{const suc=String(pick(r,['sucursal','sucursales'])).trim(),fran=String(pick(r,['franquicia'])).trim();
+      let lat=num(pick(r,['latitud','lat'])),lng=num(pick(r,['longitud','lng','lon']));const co=String(pick(r,['coordenadas','coordenada','ubicacion'])).replace(/\s/g,'');
+      if((isNaN(lat)||isNaN(lng))&&co){const m=co.split(/[,;]/);lat=parseFloat(m[0]);lng=parseFloat(m[1])}
+      if(!suc||isNaN(lat)||isNaN(lng)||Math.abs(lat)>90||Math.abs(lng)>180){skip++;return}
+      const prev=S.branches.find(b=>norm(b.fran)===norm(fran)&&norm(b.suc)===norm(suc));
+      out.push({id:prev?prev.id:'b'+uid(),marca:String(pick(r,['marca'])).trim(),depto:normDepto(String(pick(r,['departamento','depto'])).trim()),fran,suc,
+        dir:String(pick(r,['direccion','domicilio'])).replace(/\s+/g,' ').trim(),lat:+lat.toFixed(6),lng:+lng.toFixed(6)})});
+    if(!out.length)return toast('No se encontraron sucursales con coordenadas en el archivo');
+    if(!confirm(`Se van a reemplazar las ${S.branches.length} sucursales actuales por las ${out.length} del archivo. Las visitas ya registradas se mantienen. ¿Continuar?`))return;
+    S.branches=out;save();render();toast(`${out.length} sucursales cargadas${skip?` · ${skip} filas sin sucursal o coordenadas`:''}`)}catch(e){toast(e.message||String(e))}}
+function exportBranches(){
+  if(!window.XLSX)return toast('Para exportar a Excel hace falta conexión a internet.');const bl=branchLast();
+  const rows=branchesF().map((b,i)=>({Orden:i+1,MARCA:b.marca,DEPARTAMENTO:b.depto,FRANQUICIA:b.fran,SUCURSAL:b.suc,'DIRECCIÓN':b.dir,COORDENADAS:`${b.lat},${b.lng}`,
+    'Última visita':bl[b.id]?fmtDT(bl[b.id].ts):'','Visitada por':bl[b.id]?U(bl[b.id].asesorId).name:''}));
+  const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(rows),'Sucursales');XLSX.writeFile(wb,'sucursales-aliados.xlsx')}
+VIEWS.sucursales=sucursalesView;AFTER.sucursales=mountBranchMap;
+
 /* ============ Excel ============ */
 const pick=(r,keys)=>{for(const k of Object.keys(r))if(keys.includes(norm(k)))return r[k];return ''};
 const num=x=>parseFloat(String(x).replace(',','.'));
@@ -1411,6 +1597,9 @@ const ACT={
   close:closeModal,
   locate:()=>{toast('Buscando tu ubicación…');gpsGet().then(p=>{toast(`Ubicación encontrada · ±${p.acc} m`);if(S.jornada[S.me]?.active)addTrackPt(p,S.me);refreshLive();if(ui.tab==='hoy'&&$('#modal').hidden)render()}).catch(e=>toast(e.message))},
   'jornada-start':startJornada,'jornada-stop':stopJornada,
+  'visit-branch':id=>{const b=S.branches.find(x=>x.id===id);if(b)openVisit({name:bName(b),lat:b.lat,lng:b.lng,branchId:b.id})},
+  'br-focus':id=>{const b=S.branches.find(x=>x.id===id);if(!b||!BMAP)return;$('#bmap').scrollIntoView({behavior:'smooth',block:'center'});BMAP.setView([b.lat,b.lng],16);setTimeout(()=>BMK[id]?.openPopup(),350)},
+  'br-export':exportBranches,
   'visit-client':id=>{const c=S.clients.find(x=>x.id===id);if(c)openVisit({name:c.name,lat:c.lat,lng:c.lng,clientId:c.id})},
   'visit-item':id=>{const[kid,iid]=id.split(':');const k=S.campaigns.find(c=>c.id===kid),it=k?.items.find(i=>i.id===iid);if(it)openVisit({name:it.name,lat:it.lat,lng:it.lng,clientId:it.clientId,campaignId:kid,itemId:iid})},
   'vm-gps':vmLocate,
@@ -1420,7 +1609,9 @@ const ACT={
   'cam-cancel':()=>{stopCam();const b=$('#vm-cam');if(b)b.innerHTML=camIdleHTML()},
   'cam-flip':()=>{CAM.facing=CAM.facing==='environment'?'user':'environment';camOpen()},
   menu:()=>document.body.classList.toggle('menu-open'),
+  'l-eye':()=>{const i=$('#l-pass');i.type=i.type==='password'?'text':'password'},
   theme:()=>{S.settings.theme=isDark()?'light':'dark';save();render()},
+  logout:logout,
   resetcolor:()=>{S.company.color='';save();render();toast('Se usa el color del tema')},
   'req-loc':reqForm,'req-send':sendReq,'open-req':openReq,
   'req-approve':id=>reviewReq(id,true),'req-reject':id=>reviewReq(id,false),
@@ -1468,6 +1659,9 @@ const CHG={
   sbset:(v,el)=>{const k=el.dataset.id;v=v.trim();if(k==='sbKey'&&isSecretKey(v)){el.value=S.settings.sbKey||'';return toast('Esa es la clave SECRETA. No la pongas en la app: usá la clave pública (anon o publishable).')}
     S.settings[k]=v;SB=null;save()},
   fxas:v=>{FX.asesor=v},
+  bf:(v,el)=>{const k=el.dataset.id;BF[k]=v;if(k==='marca')BF.fran='all';
+    if(k==='sort'&&v==='cerca'&&!GPS.pos){toast('Buscando tu ubicación…');gpsGet().then(()=>render()).catch(e=>{toast(e.message);BF.sort='fran';render()});return}render()},
+  'br-import':(v,el)=>{const f=el.files[0];if(f)importBranches(f);el.value=''},
   offset:v=>{S.settings.clockOffset=parseInt(v)||0;save();toast(S.settings.clockOffset?`Prueba: el celular va a mandar la hora con ${S.settings.clockOffset} min de diferencia`:'Hora del celular normal')},
   cname:v=>{S.company.name=v.trim()||'Mi empresa';save();renderHeader()},
   ccolor:v=>{S.company.color=v;save();renderHeader()},
@@ -1475,12 +1669,14 @@ const CHG={
 };
 document.addEventListener('click',e=>{const m=$('#modal');if(e.target===m){closeModal();return}const b=e.target.closest('[data-act]');if(!b)return;const a=ACT[b.dataset.act];if(a){e.preventDefault();a(b.dataset.id,b,e)}});
 document.addEventListener('change',e=>{const b=e.target.closest('[data-chg]');if(b&&CHG[b.dataset.chg])CHG[b.dataset.chg](b.value,b,e)});
-document.addEventListener('input',e=>{const b=e.target.closest('[data-inp]');if(b&&b.dataset.inp==='q'){ui.q=b.value;refreshClients()}});
+let bqT=null;
+document.addEventListener('input',e=>{const b=e.target.closest('[data-inp]');if(!b)return;if(b.dataset.inp==='q'){ui.q=b.value;refreshClients()}
+  if(b.dataset.inp==='bq'){BF.q=b.value;clearTimeout(bqT);bqT=setTimeout(()=>{const l=$('#blist');if(l)l.innerHTML=branchListHTML();drawBranches(false)},200)}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#modal').hidden)closeModal();if(e.key==='Enter'&&e.target.id==='vd-txt')$('[data-act="vd-comment"]')?.click()});
 
 /* ============ Inicio ============ */
-load();render();
-setTimeout(()=>syncPending(false),1500);
+load();
+{const ses=getSession();if(ses){S.me=ses.userId;startApp()}else showLogin()}
 window.addEventListener('online',()=>syncPending(false));
 let wasSm=window.innerWidth<640;window.addEventListener('resize',()=>{const sm=window.innerWidth<640;if(sm!==wasSm){wasSm=sm;if($('#modal').hidden&&['resumen','equipo','hoy'].includes(ui.tab))render()}});
 if(S.jornada[S.me]?.active&&!S.settings.simGps&&GPS.supported)startWatch(S.me);
