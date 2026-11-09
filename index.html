@@ -365,7 +365,13 @@ pre.code{background:oklch(0.1288 0.0406 264.7);color:oklch(0.9 0.05 140);padding
 .eye svg{width:18px;height:18px}
 .lmsg{min-height:20px;color:var(--bad);font-size:13px;font-weight:500;margin:2px 0 8px}
 .lbtn{width:100%;padding:12px;font-size:15px}
-.lfoot{text-align:center;margin:16px 0 0}
+.lsep{display:flex;align-items:center;gap:10px;color:var(--muted-foreground);font-size:12px;margin:16px 0 12px}
+.lsep::before,.lsep::after{content:"";flex:1;height:1px;background:var(--border)}
+.swapb{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:6px 14px;font-size:12.5px;font-weight:600;border-radius:99px;border:1px solid var(--primary);background:var(--primary);color:var(--primary-foreground);cursor:pointer;text-decoration:none;white-space:nowrap;box-shadow:0 4px 12px color-mix(in srgb,var(--primary) 30%,transparent);transition:filter .15s,transform .15s}
+.swapb:hover{filter:brightness(.95)}.swapb:active{transform:scale(.97)}
+.swapb svg{width:14px;height:14px;flex:none}
+.lswapw{text-align:center}
+#swap{align-self:flex-start;margin:10px 6px 14px}
 .mini-av{width:22px;height:22px;border-radius:50%;display:inline-grid;place-items:center;color:#fff;font-size:10px;font-weight:700;margin-left:-6px}
 #bmap{height:520px;border-radius:var(--radius-lg);border:1px solid var(--border);overflow:hidden}
 @media(max-width:700px){#bmap{height:380px}}
@@ -381,6 +387,7 @@ pre.code{background:oklch(0.1288 0.0406 264.7);color:oklch(0.9 0.05 140);padding
   <aside id="side">
     <div id="brand"></div>
     <nav id="nav"></nav>
+    <a id="swap" class="swapb" href="#" data-act="swap"></a>
     <div class="sfoot"><i></i><span id="sfoot" class="grow">En vivo</span><button class="link" data-act="logout" title="Cerrar sesión">Salir</button></div>
   </aside>
   <div id="scrim" data-act="menu"></div>
@@ -724,7 +731,7 @@ try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if
 
 
 /* ============ Ingreso (login) ============
-   Hay dos versiones de este archivo (ejecutivo.html y admin.html); cada una acepta solo sus propias cuentas.
+   Hay dos versiones de este archivo (ejecutivo.html e index.html, la de administración); cada una acepta solo sus propias cuentas.
    Las contraseñas no están escritas: se guarda solo su huella (SHA-256).
    OJO: en un archivo HTML esto es una puerta de entrada, no seguridad real.
    Para seguridad real, el ingreso debe validarlo un servidor (por ejemplo, Supabase Auth). */
@@ -732,6 +739,15 @@ const APP_MODE=document.documentElement.dataset.mode==='ejecutivo'?'ejecutivo':'
 const ACCOUNTS={
   ejecutivo:[{u:'gbazan',h:'b754ce166b70963c1bfc98be1f9cc3e7d4cdf0c3d2759428e65c2f4880d37535',userId:'u1'}],
   admin:[{u:'admin',h:'8dc014cd246b3259eecd6c7f3e40dc6a467a042119dfc1bbb7bfadb876b8cd2c',userId:'g1'}]};
+/* Botón para cambiar de acceso. Nombres de archivo del repositorio:
+   administración = index.html · ejecutivos = ejecutivo.html */
+const OTHER_APP=APP_MODE==='admin'?{href:'ejecutivo.html',label:'Ejecutivos'}:{href:'index.html',label:'Administración'};
+function otherUrl(){
+  try{const u=new URL(location.href);u.hash='';u.search='';let p=u.pathname;
+    const last=p.split('/').pop();
+    if(!p.endsWith('/'))p=last.includes('.')?p.slice(0,p.lastIndexOf('/')+1):p+'/';
+    u.pathname=p+OTHER_APP.href;return u.href}catch(e){return OTHER_APP.href}}
+const SWAP_ICON='<path d="M7 7h11l-3-3M17 17H6l3 3"/>';
 const SESSION_KEY='eec-sesion-'+APP_MODE,FAIL_KEY='eec-intentos-'+APP_MODE;
 function sha256(str){
   str=unescape(encodeURIComponent(str));const rr=(v,a)=>(v>>>a)|(v<<(32-a)),mw=2**32,K=[],H=[],w=[];let res='',n=0;
@@ -760,7 +776,8 @@ function showLogin(msg){
     <label class="cb"><input type="checkbox" id="l-keep"><span>Mantener la sesión abierta en este dispositivo</span></label>
     <div id="l-msg" class="lmsg" role="alert">${msg?esc(msg):''}</div>
     <button class="btn primary lbtn" type="submit">Ingresar</button>
-    <p class="sub lfoot">${adm?'¿Sos ejecutivo? Abrí <b>ejecutivo.html</b>.':'¿Sos administrador? Abrí <b>admin.html</b>.'}</p>
+    <div class="lsep"><span>o</span></div>
+    <div class="lswapw"><a class="swapb" href="${otherUrl()}" data-act="swap">${sv(SWAP_ICON)}Ir a ${OTHER_APP.label}</a></div>
   </form></div>`;
   $('#lform').addEventListener('submit',doLogin);setTimeout(()=>$('#l-user')?.focus(),50)}
 function doLogin(e){
@@ -771,7 +788,7 @@ function doLogin(e){
   if(!acc){f.n++;if(f.n>=5){f.until=Date.now()+5*60000;f.n=0}try{localStorage.setItem(FAIL_KEY,JSON.stringify(f))}catch(e){}
     $('#l-pass').value='';$('#l-pass').focus();
     const other=ACCOUNTS[APP_MODE==='admin'?'ejecutivo':'admin'].some(a=>a.u===u);
-    return msg.textContent=other?`Este usuario no es de ${APP_MODE==='admin'?'administración':'ejecutivos'}. Abrí ${APP_MODE==='admin'?'ejecutivo.html':'admin.html'}.`:f.until>Date.now()?'Demasiados intentos. Esperá 5 minutos.':'Usuario o contraseña incorrectos.'}
+    return msg.textContent=other?`Este usuario no es de ${APP_MODE==='admin'?'administración':'ejecutivos'}. Usá el botón «Ir al acceso de ${OTHER_APP.label}».`:f.until>Date.now()?'Demasiados intentos. Esperá 5 minutos.':'Usuario o contraseña incorrectos.'}
   try{localStorage.removeItem(FAIL_KEY);localStorage.setItem(SESSION_KEY,JSON.stringify({userId:acc.userId,u:acc.u,at:Date.now(),exp:Date.now()+($('#l-keep').checked?30*DAY:12*3600e3)}))}catch(e){}
   S.me=acc.userId;save();startApp();toast('Bienvenido, '+me().name)}
 function startApp(){$('#login').hidden=true;$('#login').innerHTML='';$('#app').hidden=false;ui.tab=null;ui.asesor='all';render();setTimeout(()=>syncPending(false),1500)}
@@ -786,6 +803,7 @@ function renderHeader(){
   applyTheme();
   $('#brand').innerHTML=(S.company.logo?`<img src="${S.company.logo}" alt="${esc(S.company.name)}">`:`<span class="logo"></span><div><b>${esc(S.company.name)}</b><small>Seguimiento comercial</small></div>`);
   const yo=me();$('#who').innerHTML=`<span class="mini-av" style="background:${yo.color||'var(--secondary)'}">${initials(yo.name)}</span>${esc(yo.name)}${yo.name===(APP_MODE==='admin'?'Administrador':'Ejecutivo')?'':' · '+(APP_MODE==='admin'?'Administrador':'Ejecutivo')}`;
+  const sw=$('#swap');if(sw){sw.href=otherUrl();sw.innerHTML=`${sv(SWAP_ICON)}Cambiar a ${OTHER_APP.label}`}
   const sf=$('#sfoot');if(sf)sf.textContent=`En vivo · ${APP_MODE==='admin'?'Administración':'Ejecutivo'}${sbClient()?' · Supabase':''}`;updPill()}
 function render(){
   if(MAP){MAP.remove();MAP=null;MYMK=null}if(CMAP){CMAP.remove();CMAP=null}if(BMAP){BMAP.remove();BMAP=null;BLAYER=null}
@@ -1612,6 +1630,7 @@ const ACT={
   'l-eye':()=>{const i=$('#l-pass');i.type=i.type==='password'?'text':'password'},
   theme:()=>{S.settings.theme=isDark()?'light':'dark';save();render()},
   logout:logout,
+  swap:()=>{location.href=otherUrl()},
   resetcolor:()=>{S.company.color='';save();render();toast('Se usa el color del tema')},
   'req-loc':reqForm,'req-send':sendReq,'open-req':openReq,
   'req-approve':id=>reviewReq(id,true),'req-reject':id=>reviewReq(id,false),
